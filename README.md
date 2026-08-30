@@ -1,19 +1,43 @@
-# CS229 Notebooks
+# CS229 Spring 2026 Notebooks
 
-跟踪我自学 Stanford [CS229](https://cs229.stanford.edu/)（机器学习）的练习记录。
+跟踪我自学 Stanford [CS229 Spring 2026](https://cs229.stanford.edu/index.html-spr26)（机器学习）的练习记录。
 
-练习题目由 GPT 根据每讲内容布置，风格是 **手动填空 / 手打代码**（notebook 里只给公式、任务说明和 `# TODO`，不给答案），用来强迫自己把推导和代码都亲手过一遍，而不是复制粘贴。
+练习题目按照 [Spring 2026 官方视频](https://www.youtube.com/playlist?list=PLaqpC4kq8Gpw)和
+[2026 Main Notes](https://cs229.stanford.edu/main_notes.pdf)逐讲布置，风格是
+**手动填空 / 手打代码**：notebook 只给目标、公式、实验任务、检查项和 `# TODO`，不给答案。
 
 ## 结构
 
-按讲次分文件夹，每个文件夹里放对应的练习 notebook：
+仓库包含 Lecture 1–17 的完整作业，每讲一个文件夹、一个 notebook。完整对应关系见
+[COURSE_MAP.md](COURSE_MAP.md)。
 
-- [`lecture02/`](lecture02/) — Linear Regression, Batch GD, SGD, Mini-batch GD, PyTorch (autograd, `optim.SGD`, `nn.Linear`)
+- `lecture01/`–`lecture06/`：监督学习、GLM、生成式分类、泛化与 ML advice
+- `lecture07/`–`lecture08/`：神经网络架构与反向传播
+- `lecture09/`–`lecture10/`：K-means、GMM/EM、PCA
+- `lecture11/`–`lecture15/`：Diffusion、Representation Learning、LLM、Transformer、MoE、SFT
+- `lecture16/`–`lecture17/`：Policy Gradient、PPO、RLVR
 
-后续每次布置新作业，新建一个 `lectureNN/` 文件夹即可。
+`scripts/build_notebooks.py` 可以从统一规格生成空白作业（默认跳过已存在的 notebook，保护已经填写的答案）；
+`scripts/validate_notebooks.py` 会检查 notebook 结构、来源、`TODO` 模式，并在内存中逐本从头执行。
 
 ## 环境
 
 ```bash
 pip install numpy matplotlib torch jupyter
 ```
+
+## 验证空白作业
+
+```bash
+python scripts/validate_notebooks.py
+```
+
+空白 notebook 的代码单元只有 `TODO` 注释，因此在填写答案前也能安全地从头运行。
+
+如需重建全部空白作业，可以显式运行：
+
+```bash
+python scripts/build_notebooks.py --force
+```
+
+`--force` 会覆盖现有 notebook；使用前应先提交自己的答案。
