@@ -6,6 +6,16 @@
 [2026 Main Notes](https://cs229.stanford.edu/main_notes.pdf)逐讲布置，风格是
 **手动填空 / 手打代码**：notebook 只给目标、公式、实验任务、检查项和 `# TODO`，不给答案。
 
+## 公开学习资料
+
+- [CS229 Spring 2026 课程主页](https://cs229.stanford.edu/index.html-spr26)：课程信息和官方入口。
+- [CS229 Lecture Notes 2026](https://cs229.stanford.edu/main_notes.pdf)：Tengyu Ma 和 Andrew Ng 编写的官方主讲义，是本仓库 notebook 的主要文字参考。
+- [CS229 官方讲义归档](https://cs229.stanford.edu/notes_archive/)：按主题拆分的经典讲义和补充材料。
+- [CS229 Illustrated Cheatsheets](https://stanford.edu/~shervine/teaching/cs-229/)：监督学习、无监督学习、深度学习及实用技巧的图解速查表，适合复习。
+- [Spring 2026 官方视频](https://www.youtube.com/playlist?list=PLaqpC4kq8Gpw)：与本仓库 Lecture 1–17 对应的课程视频。
+
+推荐顺序：观看对应课程视频，阅读主讲义相关章节，再独立完成 notebook 中的 `# TODO`。逐讲对应关系见 [COURSE_MAP.md](COURSE_MAP.md)。
+
 ## 结构
 
 仓库包含 Lecture 1–17 的完整作业，每讲一个文件夹、一个 notebook。完整对应关系见
