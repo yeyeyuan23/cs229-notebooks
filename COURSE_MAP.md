@@ -21,7 +21,7 @@ CS229 的公开作业通常不是“每听一讲回答几个零散问题”，�
 
 ## 来源边界
 
-- **课程版本：**[Spring 2026 页面](https://cs229.stanford.edu/index.html-spr26)、[官方视频](https://www.youtube.com/playlist?list=PLaqpC4kq8Gpw)、[2026 Main Notes](https://cs229.stanford.edu/main_notes.pdf)。
-- **官方公开题型参考：**[Summer 2020 assignments](https://cs229.stanford.edu/summer2020/)。
-- **近年结构参考：**[学生公开的 CS229 仓库](https://github.com/MDzimah/Stanford-University-CS229-Machine-Learning)。其内容属于学生上传材料，不等同于官方公开发布，更不等同于 Spring 2026 作业。
-- **本仓库内容：**题目表述、缩小后的数据、检查代码均为本仓库重新编写；不收录学生解答。
+- **课程版本：** [Spring 2026 页面](https://cs229.stanford.edu/index.html-spr26)、[官方视频](https://www.youtube.com/playlist?list=PLaqpC4kq8Gpw)、[2026 Main Notes](https://cs229.stanford.edu/main_notes.pdf)。
+- **官方公开题型参考：** [Summer 2020 assignments](https://cs229.stanford.edu/summer2020/)。
+- **近年结构参考：** [学生公开的 CS229 仓库](https://github.com/MDzimah/Stanford-University-CS229-Machine-Learning)。其内容属于学生上传材料，不等同于官方公开发布，更不等同于 Spring 2026 作业。
+- **本仓库内容：** 题目表述、缩小后的数据、检查代码均为本仓库重新编写；不收录学生解答。

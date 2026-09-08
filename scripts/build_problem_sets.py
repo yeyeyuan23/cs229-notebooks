@@ -54,7 +54,7 @@ def notebook(title: str, subtitle: str, cells: list, slug: str):
         - [Stanford 官方公开的 Summer 2020 problem sets]({OFFICIAL_2020})
         - [公开可见的 Summer 2025 作业结构参考]({PUBLIC_2025})
 
-        **使用规则：**先手推，再写代码。不要先看学生 solution。每道题完成后才把对应的
+        **使用规则：** 先手推，再写代码。不要先看学生 solution。每道题完成后才把对应的
         `RUN_*_CHECKS` 改成 `True`。检查不通过时，从 shape 和公式开始定位。
         """
     )
@@ -132,7 +132,7 @@ def build_ps0():
             r"""
             ## Problem 1 — 从 shape 判断矩阵乘法
 
-            **为什么做：**从 Lecture 2 开始，每个模型都要同时处理很多样本。这里先确认
+            **为什么做：** 从 Lecture 2 开始，每个模型都要同时处理很多样本。这里先确认
             $(5,2)@(2,)\rightarrow(5,)$ 的含义。
 
             1. 运行前，在纸上写出 `X @ theta` 的 shape。
@@ -170,7 +170,7 @@ def build_ps0():
 
             $$J(\theta)=\frac{1}{2m}\lVert X\theta-y\rVert_2^2.$$
 
-            **任务：**从上式推导 $\nabla_\theta J(\theta)$。每一步标出 shape；最终结果必须与
+            **任务：** 从上式推导 $\nabla_\theta J(\theta)$。每一步标出 shape；最终结果必须与
             $\theta$ 同 shape。然后把公式翻译为 NumPy。
             """
         ),
@@ -188,7 +188,7 @@ def build_ps0():
             """
             ## Problem 3 — 用数值梯度检查手推公式
 
-            **为什么做：**推导看起来正确并不等于代码正确。数值梯度用很小的扰动检查每个参数。
+            **为什么做：** 推导看起来正确并不等于代码正确。数值梯度用很小的扰动检查每个参数。
             下面的检查代码已给出；你只需要完成 Problem 2。
             """
         ),
@@ -277,12 +277,12 @@ def build_ps1():
             r"""
             ## Problem 1 — Normal equation
 
-            **课堂连接：**Lecture 2，线性模型与最小二乘。
+            **课堂连接：** Lecture 2，线性模型与最小二乘。
 
             使用 $\phi(x)=[1,x]$，令 $X\in\mathbb{R}^{m\times2}$。先在纸上从
             $J(\theta)=\frac{1}{2m}\lVert X\theta-y\rVert^2$ 推导 normal equation，再实现函数。
 
-            **预期：**返回 `(2,)` 的参数；训练和验证 MSE 都应明显小于直接预测均值的基线。
+            **预期：** 返回 `(2,)` 的参数；训练和验证 MSE 都应明显小于直接预测均值的基线。
             """
         ),
         answer_box("写出从令梯度为零到 normal equation 的推导，并标注矩阵 shape。"),
@@ -325,14 +325,14 @@ def build_ps1():
             r"""
             ## Problem 2 — Gradient descent
 
-            **课堂连接：**Lecture 2，迭代优化。
+            **课堂连接：** Lecture 2，迭代优化。
 
             1. 写出平方误差对 $\theta$ 的梯度。
             2. 从全零参数开始更新。
             3. 每 100 步保存一次 loss。
             4. 将最终参数与 Problem 1 的 normal-equation 结果比较。
 
-            **预期：**loss 整体下降；足够迭代后，两种方法的参数应接近。
+            **预期：** loss 整体下降；足够迭代后，两种方法的参数应接近。
             """
         ),
         answer_box("写出一次 gradient-descent update，包括学习率。"),
@@ -370,12 +370,12 @@ def build_ps1():
             r"""
             ## Problem 3 — Polynomial feature map
 
-            **题型来源：**CS229 problem sets 常用此实验展示模型容量与过拟合。
+            **题型来源：** CS229 problem sets 常用此实验展示模型容量与过拟合。
 
             实现 $\phi_k(x)=[1,x,x^2,\ldots,x^k]$，分别拟合 `degree = 1, 3, 10`。
             记录 train 和 valid MSE，并画出三条曲线。
 
-            **需要回答：**哪个 degree 欠拟合？哪个可能过拟合？依据必须来自图和 MSE。
+            **需要回答：** 哪个 degree 欠拟合？哪个可能过拟合？依据必须来自图和 MSE。
             """
         ),
         code(
@@ -414,13 +414,13 @@ def build_ps1():
             r"""
             ## Problem 4 — Locally weighted regression
 
-            **课堂连接：**Lecture 3，LWR。
+            **课堂连接：** Lecture 3，LWR。
 
             对每个查询点 $x$ 使用
             $w^{(i)}=\exp(-(x^{(i)}-x)^2/(2\tau^2))$，再解加权 normal equation。
 
             实现 `predict_lwr`，比较 $\tau\in\{0.1,0.5,2.0\}$ 的 validation MSE 和曲线。
-            **预期：**很小的 $\tau$ 更弯曲，很大的 $\tau$ 更接近全局直线。
+            **预期：** 很小的 $\tau$ 更弯曲，很大的 $\tau$ 更接近全局直线。
             """
         ),
         code(
@@ -502,7 +502,7 @@ def build_ps2():
             r"""
             ## Problem 1 — Logistic regression from scratch
 
-            **课堂连接：**Lecture 3，binary classification 与 logistic regression。
+            **课堂连接：** Lecture 3，binary classification 与 logistic regression。
 
             $$p(y=1\mid x;\theta)=\sigma(\theta^\top x),\qquad
             \sigma(z)=\frac{1}{1+e^{-z}}.$$
@@ -554,12 +554,12 @@ def build_ps2():
             r"""
             ## Problem 2 — 为什么 accuracy 会骗人
 
-            **题型来源：**新版公开作业中的 imbalanced classification 实验。
+            **题型来源：** 新版公开作业中的 imbalanced classification 实验。
 
             实现 TP、TN、FP、FN、accuracy、balanced accuracy、precision、recall 和 F1。
             比较两个模型：全部预测为 0 的 baseline，以及 Problem 1 的 logistic regression。
 
-            **需要回答：**哪个指标揭示了少数类完全没被识别？不要只抄定义，要引用实际数字。
+            **需要回答：** 哪个指标揭示了少数类完全没被识别？不要只抄定义，要引用实际数字。
             """
         ),
         code(
@@ -590,7 +590,7 @@ def build_ps2():
             为正类样本设置更大的 `sample_weight`，重新训练 logistic regression。比较普通模型与
             加权模型的 majority/minority accuracy 和 balanced accuracy。
 
-            **预期：**少数类 recall 通常提高，但多数类 accuracy 可能下降。这是 trade-off，
+            **预期：** 少数类 recall 通常提高，但多数类 accuracy 可能下降。这是 trade-off，
             不是“所有指标一起提高”。
             """
         ),
@@ -609,7 +609,7 @@ def build_ps2():
             r"""
             ## Problem 4 — 两层神经网络处理 XOR
 
-            **课堂连接：**Lecture 7–8。线性决策边界无法解决 XOR，两层网络可以。
+            **课堂连接：** Lecture 7–8。线性决策边界无法解决 XOR，两层网络可以。
 
             网络结构固定为 `2 -> 4 -> 1`，隐藏层用 `tanh`，输出用 sigmoid。先在纸上标出
             $W_1,b_1,W_2,b_2$ 的 shape，再实现 forward 和 backward。
@@ -709,12 +709,12 @@ def build_ps3():
             r"""
             ## Problem 1 — K-means 与图像压缩
 
-            **课堂连接：**Lecture 9。
+            **课堂连接：** Lecture 9。
 
             把每个 RGB 像素当成三维样本。实现 centroid 初始化、assignment 和 centroid update，
             然后用 4 种颜色重建图像。
 
-            **预期：**loss 在迭代中不增加；压缩图像 shape 与原图完全相同。
+            **预期：** loss 在迭代中不增加；压缩图像 shape 与原图完全相同。
             """
         ),
         code(
@@ -759,14 +759,14 @@ def build_ps3():
             r"""
             ## Problem 2 — PCA 降到一维再重建
 
-            **课堂连接：**Lecture 10。
+            **课堂连接：** Lecture 10。
 
             1. 对数据逐列中心化。
             2. 计算 covariance matrix。
             3. 用 `np.linalg.eigh` 找最大特征值对应方向。
             4. 投影到一维，再重建回二维。
 
-            **预期：**主方向 shape 为 `(2, 1)`；重建误差小于“所有点都预测为均值”的基线。
+            **预期：** 主方向 shape 为 `(2, 1)`；重建误差小于“所有点都预测为均值”的基线。
             """
         ),
         code(
@@ -810,12 +810,12 @@ def build_ps3():
             r"""
             ## Problem 3 — 一维两成分 GMM 的 EM（选做）
 
-            **课堂连接：**Lecture 9–10。
+            **课堂连接：** Lecture 9–10。
 
             不调用 sklearn。实现 E-step 的 responsibility，以及 M-step 的 $\pi_k,\mu_k,\sigma_k^2$
             更新。为避免下溢，可以在概率中加很小的 epsilon。
 
-            **预期：**每行 responsibility 之和为 1；log-likelihood 不应明显下降。
+            **预期：** 每行 responsibility 之和为 1；log-likelihood 不应明显下降。
             """
         ),
         code(

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+import re
 import sys
 import tempfile
 from pathlib import Path
@@ -31,6 +32,8 @@ def validate_one(path: Path) -> None:
             raise AssertionError(f"{path}: missing {heading}")
     if "START TODO" not in code:
         raise AssertionError(f"{path}: no implementation TODO found")
+    if re.search(r"\*\*[^*\n]+：\*\*\S", markdown):
+        raise AssertionError(f"{path}: add whitespace after a bold Chinese label")
     if nb.metadata.get("cs229", {}).get("offering") != "Spring 2026":
         raise AssertionError(f"{path}: wrong offering metadata")
     if nb.metadata.get("cs229", {}).get("artifact") != "simplified-source-grounded-problem-set":
