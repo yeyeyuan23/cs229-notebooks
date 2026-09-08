@@ -1,53 +1,57 @@
-# CS229 Spring 2026 Notebooks
+# CS229 Spring 2026 — Simplified Problem Sets
 
-跟踪我自学 Stanford [CS229 Spring 2026](https://cs229.stanford.edu/index.html-spr26)（机器学习）的练习记录。
+这是一个跟随 Stanford CS229 Spring 2026 自学的练习仓库。现在的主线不是“每节课硬凑一份 notebook”，而是四套连贯的 problem set：先推必要公式，再用 NumPy 完成与课堂概念对应的小实验。
 
-练习题目按照 [Spring 2026 官方视频](https://www.youtube.com/playlist?list=PLaqpC4kq8Gpw)和
-[2026 Main Notes](https://cs229.stanford.edu/main_notes.pdf)逐讲布置，风格是
-**手动填空 / 手打代码**：notebook 只给目标、公式、实验任务、检查项和 `# TODO`，不给答案。
+> 这些不是 Stanford 官方 Spring 2026 作业，也不包含答案。Spring 2026 课程主页把 problem set 放在需要 Stanford 身份登录的 Ed 上；本仓库只参考公开课程资料、Stanford 过去公开的作业形式，以及学生公开上传到 GitHub 的近年题型结构，然后重新编写更短、可独立完成的版本。
 
-## 公开学习资料
+## 从哪里开始
 
-- [CS229 Spring 2026 课程主页](https://cs229.stanford.edu/index.html-spr26)：课程信息和官方入口。
-- [CS229 Lecture Notes 2026](https://cs229.stanford.edu/main_notes.pdf)：Tengyu Ma 和 Andrew Ng 编写的官方主讲义，是本仓库 notebook 的主要文字参考。
-- [CS229 官方讲义归档](https://cs229.stanford.edu/notes_archive/)：按主题拆分的经典讲义和补充材料。
-- [CS229 Illustrated Cheatsheets](https://stanford.edu/~shervine/teaching/cs-229/)：监督学习、无监督学习、深度学习及实用技巧的图解速查表，适合复习。
-- [Spring 2026 官方视频](https://www.youtube.com/playlist?list=PLaqpC4kq8Gpw)：与本仓库 Lecture 1–17 对应的课程视频。
+| 题集 | 对应内容 | 主要任务 |
+|---|---|---|
+| [PS0 Foundations](problem_sets/ps0_foundations/cs229_simplified_ps0_foundations.ipynb) | 开课前/Linear Algebra 预备 | shape、向量化、平方误差梯度、数值梯度检查 |
+| [PS1 Regression](problem_sets/ps1_regression/cs229_simplified_ps1_regression.ipynb) | Lecture 2–3 | normal equation、gradient descent、polynomial features、LWR |
+| [PS2 Classification](problem_sets/ps2_classification/cs229_simplified_ps2_classification.ipynb) | Lecture 3–8 | logistic regression、类别不平衡、weighted loss、两层神经网络 |
+| [PS3 Unsupervised](problem_sets/ps3_unsupervised/cs229_simplified_ps3_unsupervised.ipynb) | Lecture 9–10 | K-means 图像压缩、PCA、GMM/EM（选做） |
 
-推荐顺序：观看对应课程视频，阅读主讲义相关章节，再独立完成 notebook 中的 `# TODO`。逐讲对应关系见 [COURSE_MAP.md](COURSE_MAP.md)。
+每道题都写清楚：为什么现在做、需要推导什么、需要实现什么、预期看到什么，以及如何打开检查。所有 `RUN_..._CHECKS` 默认都是 `False`，所以空白 starter notebook 可以从头运行，不会因为未填写的 TODO 立刻中断。
 
-## 结构
+## 资料与出处
 
-仓库包含 Lecture 1–17 的完整作业，每讲一个文件夹、一个 notebook。完整对应关系见
-[COURSE_MAP.md](COURSE_MAP.md)。
+- [Spring 2026 课程主页](https://cs229.stanford.edu/index.html-spr26)：课程顺序与官方入口；页面说明课程文档仅向 Stanford affiliates 开放。
+- [Spring 2026 官方视频](https://www.youtube.com/playlist?list=PLaqpC4kq8Gpw)：本仓库采用的课程版本。
+- [2026 Main Notes](https://cs229.stanford.edu/main_notes.pdf)：公式与概念主线。
+- [Stanford Summer 2020 公开作业](https://cs229.stanford.edu/summer2020/)：公开可访问的官方 pset、starter code 与数据，用来确认传统作业形式。
+- [学生公开的近年 CS229 仓库](https://github.com/MDzimah/Stanford-University-CS229-Machine-Learning)：只用于核对近年 problem-set 的主题和文件结构；本仓库不复制学生答案，也不冒充 2026 官方题目。
 
-- `lecture01/`–`lecture06/`：监督学习、GLM、生成式分类、泛化与 ML advice
-- `lecture07/`–`lecture08/`：神经网络架构与反向传播
-- `lecture09/`–`lecture10/`：K-means、GMM/EM、PCA
-- `lecture11/`–`lecture15/`：Diffusion、Representation Learning、LLM、Transformer、MoE、SFT
-- `lecture16/`–`lecture17/`：Policy Gradient、PPO、RLVR
+更精确的“课程章节 → 题集”关系见 [COURSE_MAP.md](COURSE_MAP.md)。
 
-`scripts/build_notebooks.py` 可以从统一规格生成空白作业（默认跳过已存在的 notebook，保护已经填写的答案）；
-`scripts/validate_notebooks.py` 会检查 notebook 结构、来源、`TODO` 模式，并在内存中逐本从头执行。
+## VS Code 环境
 
-## 环境
+打开 notebook 后点击右上角 kernel，选择现有的 `dev (Python 3.11.14)`：
 
-```bash
-pip install numpy matplotlib torch jupyter
+```text
+/opt/homebrew/Caskroom/miniconda/base/envs/dev/bin/python
 ```
 
-## 验证空白作业
+这四套练习只依赖 `numpy`、`matplotlib`、`jupyter`。不需要为了这批题选择 base Python 3.13，也不需要 PyTorch。
+
+## 工作方式
+
+1. 先看对应视频/讲义，不看答案。
+2. 先在 markdown 答题框里推公式、标 shape。
+3. 填写一个 `START TODO` 到 `END TODO` 区域。
+4. 把紧邻的 `RUN_..._CHECKS` 改为 `True`，只检查这一题。
+5. 最后重启 kernel 并 Run All，确认没有依赖之前残留的变量状态。
+
+生成器和验证器：
 
 ```bash
-python scripts/validate_notebooks.py
+python scripts/build_problem_sets.py --force
+python scripts/validate_problem_sets.py
 ```
 
-空白 notebook 的代码单元只有 `TODO` 注释，因此在填写答案前也能安全地从头运行。
+`--force` 会覆盖 notebook 中已经填写的答案，只应在明确想恢复空白 starter 时使用。固定随机种子生成的 CSV/NPY 数据也会同步重建。
 
-如需重建全部空白作业，可以显式运行：
+## 目前的边界
 
-```bash
-python scripts/build_notebooks.py --force
-```
-
-`--force` 会覆盖现有 notebook；使用前应先提交自己的答案。
+Lecture 11–17（diffusion、representation learning、LLM、RL）在当前公开资料中没有找到可核验的 Spring 2026 官方配套作业。因此这里暂时不伪造“官方实验”；后续若添加，会明确标为本仓库原创 lecture lab。
