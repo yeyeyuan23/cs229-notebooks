@@ -5,7 +5,7 @@
 | Lecture | 课堂主题 | 建议练习 | 说明 |
 |---:|---|---|---|
 | 1 | Introduction | [PS0](problem_sets/ps0_foundations/cs229_simplified_ps0_foundations.ipynb)（可选） | 第一讲是课程概览；只补后续所需的 NumPy/线代，不引入 classifier |
-| 2 | Supervised Learning Setup; Linear Regression | [PS1](problem_sets/ps1_regression/cs229_simplified_ps1_regression.ipynb) P1–P3 | normal equation、gradient descent、polynomial features |
+| 2 | Supervised Learning Setup; Linear Regression | [PS1](problem_sets/ps1_regression/cs229_simplified_ps1_regression.ipynb) P1–P2；P3 为扩展 | normal equation、gradient descent；P3 另行解释多项式特征，不要求仅凭本讲掌握 |
 | 3 | Weighted Least Squares; Logistic Regression; Newton's Method | [PS1](problem_sets/ps1_regression/cs229_simplified_ps1_regression.ipynb) P4；[PS2](problem_sets/ps2_classification/cs229_simplified_ps2_classification.ipynb) P1 | 先做回归，再进入 binary classifier |
 | 4 | Exponential Family; GLMs; Multiclass Classification | [PS2](problem_sets/ps2_classification/cs229_simplified_ps2_classification.ipynb) P1–P3 | 用 logistic loss 和不平衡分类理解 GLM 的实际行为 |
 | 5 | GDA; Naive Bayes | 暂无 | 先完成 PS2；后续可增加生成式分类 lab |

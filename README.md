@@ -13,7 +13,9 @@
 | [PS2 Classification](problem_sets/ps2_classification/cs229_simplified_ps2_classification.ipynb) | Lecture 3–8 | logistic regression、类别不平衡、weighted loss、两层神经网络 |
 | [PS3 Unsupervised](problem_sets/ps3_unsupervised/cs229_simplified_ps3_unsupervised.ipynb) | Lecture 9–10 | K-means 图像压缩、PCA、GMM/EM（选做） |
 
-每道题都写清楚：为什么现在做、需要推导什么、需要实现什么、预期看到什么，以及如何打开检查。所有 `RUN_..._CHECKS` 默认都是 `False`，所以空白 starter notebook 可以从头运行，不会因为未填写的 TODO 立刻中断。
+每道题说明背景、符号、函数输入输出、操作步骤和交付要求，并区分已经提供的实验代码与需要填写的 TODO。PS1 P3 另外用具体数字解释多项式特征，明确“三条曲线”是三个模型的预测曲线；模型是否过拟合要根据实际结果判断。
+
+空白 starter 的 `RUN_..._CHECKS` 默认都是 `False`，因此可以从头运行。已填写的 notebook 可以保留开启的检查和学习记录。检查默认关闭时，成功运行只说明题目骨架可执行，不代表 TODO 已实现正确。
 
 ## 资料与出处
 
@@ -48,9 +50,12 @@
 ```bash
 python scripts/build_problem_sets.py --force
 python scripts/validate_problem_sets.py
+python scripts/validate_problem_sets.py --starters
 ```
 
 `--force` 会覆盖 notebook 中已经填写的答案，只应在明确想恢复空白 starter 时使用。固定随机种子生成的 CSV/NPY 数据也会同步重建。
+
+验证器默认在内存中运行当前 notebook，允许已有答案和输出，不回写执行状态；`--starters` 则验证生成器的空白模板，也不会覆盖学习进度。
 
 ## 目前的边界
 
