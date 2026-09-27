@@ -10,6 +10,8 @@ from textwrap import dedent
 import nbformat as nbf
 import numpy as np
 
+from lesson_layout import apply_layout
+
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "problem_sets"
@@ -78,7 +80,7 @@ def notebook(title: str, subtitle: str, cells: list, slug: str):
         "artifact": "simplified-source-grounded-problem-set",
         "solutions_included": False,
     }
-    return nb
+    return apply_layout(nb, slug)
 
 
 def setup_cell(folder: str):
@@ -1270,8 +1272,23 @@ def write_data():
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--force", action="store_true", help="overwrite generated starter notebooks")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--force", action="store_true", help="overwrite generated starter notebooks")
+    mode.add_argument("--refresh-layout", action="store_true", help="reorganize existing notebooks while preserving answers and implementations")
     args = parser.parse_args()
+
+    if args.refresh_layout:
+        for path in sorted(OUT.glob("*/*.ipynb")):
+            current = nbf.read(path, as_version=4)
+            slug = path.parent.name.split("_", 1)[0]
+            updated = apply_layout(current, slug)
+            nbf.validate(updated)
+            if updated == current:
+                print("UNCHANGED", path.relative_to(ROOT))
+                continue
+            nbf.write(updated, path)
+            print("REFORMATTED", path.relative_to(ROOT))
+        return
 
     write_data()
     specs = [

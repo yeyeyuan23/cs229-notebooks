@@ -13,7 +13,9 @@
 | [PS2 Classification](problem_sets/ps2_classification/cs229_simplified_ps2_classification.ipynb) | Lecture 3–8 | logistic regression、类别不平衡、weighted loss、两层神经网络 |
 | [PS3 Unsupervised](problem_sets/ps3_unsupervised/cs229_simplified_ps3_unsupervised.ipynb) | Lecture 9–10 | K-means 图像压缩、PCA、GMM/EM（选做） |
 
-每道题说明背景、符号、函数输入输出、操作步骤和交付要求，并区分已经提供的实验代码与需要填写的 TODO。PS1 P3 另外用具体数字解释多项式特征，明确“三条曲线”是三个模型的预测曲线；模型是否过拟合要根据实际结果判断。
+每道题先说明目的，再按“短说明 → 对应代码”的顺序展开。每个函数旁说明用途、输入输出和小例子；适合独立检查的函数附有 `TRY_...` 小例子开关。读完一段就可以动手，不必先读完一整页再找代码。最后的“串起来：完整实验”把这些函数连起来。
+
+PS1 P3 先实现并检查 `polynomial_features`，再固定 `degree=3`，逐格转换训练/验证数据、拟合参数、预测、计算 MSE 和画图；最后比较 1、3、10 次模型。`Phi_train` 等变量在第一次使用的代码前解释，模型是否过拟合根据实际结果判断。
 
 空白 starter 的 `RUN_..._CHECKS` 默认都是 `False`，因此可以从头运行。已填写的 notebook 可以保留开启的检查和学习记录。检查默认关闭时，成功运行只说明题目骨架可执行，不代表 TODO 已实现正确。
 
@@ -40,9 +42,9 @@
 ## 工作方式
 
 1. 先看对应视频/讲义，不看答案。
-2. 先在 markdown 答题框里推公式、标 shape。
-3. 填写一个 `START TODO` 到 `END TODO` 区域。
-4. 把紧邻的 `RUN_..._CHECKS` 改为 `True`，只检查这一题。
+2. 看本题目的，按顺序读一小段说明，执行紧接着的代码；有推导任务时填写答题框。
+3. 填写一个函数的 `START TODO` 到 `END TODO` 区域，并运行函数定义格。完成后替换占位的 `raise NotImplementedError`。
+4. 有 `TRY_...` 的局部检查可先打开，只检查刚才的函数；完成相关函数后，打开 `RUN_..._CHECKS` 运行整题。P3 的步骤共享一个开关，需要从上到下运行。
 5. 最后重启 kernel 并 Run All，确认没有依赖之前残留的变量状态。
 
 生成器和验证器：
@@ -54,6 +56,8 @@ python scripts/validate_problem_sets.py --starters
 ```
 
 `--force` 会覆盖 notebook 中已经填写的答案，只应在明确想恢复空白 starter 时使用。固定随机种子生成的 CSV/NPY 数据也会同步重建。
+
+本次分步版式由 `scripts/lesson_layout.py` 维护。旧版学习 notebook 可运行 `python scripts/build_problem_sets.py --refresh-layout` 更新版式，保留函数实现、推导答题框和实验检查开关，不重建数据。已更新的 notebook 再次运行该命令不会被重置；拆分过的代码格需重新运行。
 
 验证器默认在内存中运行当前 notebook，允许已有答案和输出，不回写执行状态；`--starters` 则验证生成器的空白模板，也不会覆盖学习进度。
 
