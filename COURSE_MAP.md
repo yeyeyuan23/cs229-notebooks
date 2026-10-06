@@ -1,27 +1,18 @@
-# CS229 Spring 2026 Course Map
+# 讲义第一章 → 当前代码练习
 
-本表把 Spring 2026 的课堂顺序映射到仓库里的综合 problem sets。题集是重新编写的学习材料，不是官方 Spring 2026 作业。
+依据 **CS229 Lecture Notes，Tengyu Ma / Andrew Ng，2026-08-23**。以章节内容为准，不依赖视频编号。下面是讲义印刷页码，PDF 阅读器页码需加 1。
 
-| Lecture | 课堂主题 | 建议练习 | 说明 |
-|---:|---|---|---|
-| 1 | Introduction | [PS0](problem_sets/ps0_foundations/cs229_simplified_ps0_foundations.ipynb)（可选） | 第一讲是课程概览；只补后续所需的 NumPy/线代，不引入 classifier |
-| 2 | Supervised Learning Setup; Linear Regression | [PS1](problem_sets/ps1_regression/cs229_simplified_ps1_regression.ipynb) P1–P2；P3 为扩展 | normal equation、gradient descent；P3 另行解释多项式特征，不要求仅凭本讲掌握 |
-| 3 | Weighted Least Squares; Logistic Regression; Newton's Method | [PS1](problem_sets/ps1_regression/cs229_simplified_ps1_regression.ipynb) P4；[PS2](problem_sets/ps2_classification/cs229_simplified_ps2_classification.ipynb) P1 | 先做回归，再进入 binary classifier |
-| 4 | Exponential Family; GLMs; Multiclass Classification | [PS2](problem_sets/ps2_classification/cs229_simplified_ps2_classification.ipynb) P1–P3 | 用 logistic loss 和不平衡分类理解 GLM 的实际行为 |
-| 5 | GDA; Naive Bayes | 暂无 | 先完成 PS2；后续可增加生成式分类 lab |
-| 6 | Dataset Split; Bias/Variance; Regularization; ML Advice | [PS1](problem_sets/ps1_regression/cs229_simplified_ps1_regression.ipynb) P3；[PS2](problem_sets/ps2_classification/cs229_simplified_ps2_classification.ipynb) P2–P3 | 用 validation MSE 和 balanced metrics 做模型判断 |
-| 7–8 | Neural Networks; Backpropagation | [PS2](problem_sets/ps2_classification/cs229_simplified_ps2_classification.ipynb) P4 | 小型 XOR 网络，手写 forward/backward |
-| 9 | K-means; GMM | [PS3](problem_sets/ps3_unsupervised/cs229_simplified_ps3_unsupervised.ipynb) P1、P3 | 聚类、图像压缩与 EM |
-| 10 | GMM with EM; PCA | [PS3](problem_sets/ps3_unsupervised/cs229_simplified_ps3_unsupervised.ipynb) P2–P3 | PCA 投影/重建；一维 GMM 为选做 |
-| 11–17 | Diffusion; Representation Learning; LLM; Transformer; RL | 暂无可核验配套题 | 先跟官方视频和 Main Notes；不把原创题伪装成官方作业 |
+| 讲义内容 | 页码 | 第一章 notebook 中练什么 |
+|---|---:|---|
+| 房价例子、模型与输入表示 | 9–10 | 数组创建、切片、行列、截距列、循环预测与矩阵预测 |
+| 1.1 LMS algorithm | 10–14 | 损失与梯度、数值梯度检查、批量 GD、逐样本 SGD、学习率和训练实验 |
+| 1.2 The normal equations | 14–16 | 梯度为零到线性方程、`np.linalg.solve`、同数据对照 GD 与 NE |
+| §1.1–1.2 的框架对照（自学延伸） | 10–16 | PyTorch 张量、自动求导、优化器与完整训练；同设置对照 NumPy 梯度、参数、误差曲线和验证 MSE |
+| 1.3 Probabilistic interpretation | 16–18 | 独立高斯误差、对数似然、用候选参数验证与平方误差的排序关系 |
+| 1.4 Locally weighted linear regression | 18–20 | 多项式特征、局部权重、加权正规方程、degree/tau 的验证集比较 |
 
-## 为什么改成 problem sets
+入口：[第一章 notebook](chapters/01_linear_regression/linear_regression.ipynb)。
 
-CS229 的公开作业通常不是“每听一讲回答几个零散问题”，而是一套作业同时包含书面推导和编程实验。典型编程题会给训练/验证/测试数据、函数接口和报告要求，让学生实现算法、画图并解释结果。本仓库因此采用同样的学习闭环，但缩小数据和代码量，保证每题可以独立完成。
+练习用 `m` 表示样本数、`p` 表示含截距的设计矩阵列数；讲义的输入特征数 `d=p-1`。讲义的平方误差目标用求和，本练习沿用平均，梯度相差 `m` 倍，比较代码或学习率时注意这个约定。
 
-## 来源边界
-
-- **课程版本：** [Spring 2026 页面](https://cs229.stanford.edu/index.html-spr26)、[官方视频](https://www.youtube.com/playlist?list=PLaqpC4kq8Gpw)、[2026 Main Notes](https://cs229.stanford.edu/main_notes.pdf)。
-- **官方公开题型参考：** [Summer 2020 assignments](https://cs229.stanford.edu/summer2020/)。
-- **近年结构参考：** [学生公开的 CS229 仓库](https://github.com/MDzimah/Stanford-University-CS229-Machine-Learning)。其内容属于学生上传材料，不等同于官方公开发布，更不等同于 Spring 2026 作业。
-- **本仓库内容：** 题目表述、缩小后的数据、检查代码均为本仓库重新编写；不收录学生解答。
+本仓库当前提供第一章。讲义第二章是 **Classification and logistic regression**，与本章的 linear regression 区分。

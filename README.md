@@ -1,66 +1,50 @@
-# CS229 Spring 2026 — Simplified Problem Sets
+# CS229：从讲义到代码
 
-这是一个跟随 Stanford CS229 Spring 2026 自学的练习仓库。现在的主线不是“每节课硬凑一份 notebook”，而是四套连贯的 problem set：先推必要公式，再用 NumPy 完成与课堂概念对应的小实验。
+以 **CS229 Lecture Notes，Tengyu Ma / Andrew Ng，2026-08-23** 为主线的中文代码练习。通过 NumPy 实现算法，再用 PyTorch 对照自动求导与训练过程。
 
-> 这些不是 Stanford 官方 Spring 2026 作业，也不包含答案。Spring 2026 课程主页把 problem set 放在需要 Stanford 身份登录的 Ed 上；本仓库只参考公开课程资料、Stanford 过去公开的作业形式，以及学生公开上传到 GitHub 的近年题型结构，然后重新编写更短、可独立完成的版本。
+当前提供 [第一章：线性回归](chapters/01_linear_regression/linear_regression.ipynb)。这些是讲义配套的自学实验，不是 Stanford 官方作业。
 
-## 从哪里开始
+## 快速开始
 
-| 题集 | 对应内容 | 主要任务 |
-|---|---|---|
-| [PS0 Foundations](problem_sets/ps0_foundations/cs229_simplified_ps0_foundations.ipynb) | 开课前/Linear Algebra 预备 | shape、向量化、平方误差梯度、数值梯度检查 |
-| [PS1 Regression](problem_sets/ps1_regression/cs229_simplified_ps1_regression.ipynb) | Lecture 2–3 | normal equation、gradient descent、polynomial features、LWR |
-| [PS2 Classification](problem_sets/ps2_classification/cs229_simplified_ps2_classification.ipynb) | Lecture 3–8 | logistic regression、类别不平衡、weighted loss、两层神经网络 |
-| [PS3 Unsupervised](problem_sets/ps3_unsupervised/cs229_simplified_ps3_unsupervised.ipynb) | Lecture 9–10 | K-means 图像压缩、PCA、GMM/EM（选做） |
-
-每道题先说明目的，再按“短说明 → 对应代码”的顺序展开。每个函数旁说明用途、输入输出和小例子；适合独立检查的函数附有 `TRY_...` 小例子开关。读完一段就可以动手，不必先读完一整页再找代码。最后的“串起来：完整实验”把这些函数连起来。
-
-PS1 P3 先实现并检查 `polynomial_features`，再固定 `degree=3`，逐格转换训练/验证数据、拟合参数、预测、计算 MSE 和画图；最后比较 1、3、10 次模型。`Phi_train` 等变量在第一次使用的代码前解释，模型是否过拟合根据实际结果判断。
-
-空白 starter 的 `RUN_..._CHECKS` 默认都是 `False`，因此可以从头运行。已填写的 notebook 可以保留开启的检查和学习记录。检查默认关闭时，成功运行只说明题目骨架可执行，不代表 TODO 已实现正确。
-
-## 资料与出处
-
-- [Spring 2026 课程主页](https://cs229.stanford.edu/index.html-spr26)：课程顺序与官方入口；页面说明课程文档仅向 Stanford affiliates 开放。
-- [Spring 2026 官方视频](https://www.youtube.com/playlist?list=PLaqpC4kq8Gpw)：本仓库采用的课程版本。
-- [2026 Main Notes](https://cs229.stanford.edu/main_notes.pdf)：公式与概念主线。
-- [Stanford Summer 2020 公开作业](https://cs229.stanford.edu/summer2020/)：公开可访问的官方 pset、starter code 与数据，用来确认传统作业形式。
-- [学生公开的近年 CS229 仓库](https://github.com/MDzimah/Stanford-University-CS229-Machine-Learning)：只用于核对近年 problem-set 的主题和文件结构；本仓库不复制学生答案，也不冒充 2026 官方题目。
-
-更精确的“课程章节 → 题集”关系见 [COURSE_MAP.md](COURSE_MAP.md)。
-
-## VS Code 环境
-
-打开 notebook 后点击右上角 kernel，选择现有的 `dev (Python 3.11.14)`：
-
-```text
-/opt/homebrew/Caskroom/miniconda/base/envs/dev/bin/python
-```
-
-这四套练习只依赖 `numpy`、`matplotlib`、`jupyter`。不需要为了这批题选择 base Python 3.13，也不需要 PyTorch。
-
-## 工作方式
-
-1. 先看对应视频/讲义，不看答案。
-2. 看本题目的，按顺序读一小段说明，执行紧接着的代码；有推导任务时填写答题框。
-3. 填写一个函数的 `START TODO` 到 `END TODO` 区域，并运行函数定义格。完成后替换占位的 `raise NotImplementedError`。
-4. 有 `TRY_...` 的局部检查可先打开，只检查刚才的函数；完成相关函数后，打开 `RUN_..._CHECKS` 运行整题。P3 的步骤共享一个开关，需要从上到下运行。
-5. 最后重启 kernel 并 Run All，确认没有依赖之前残留的变量状态。
-
-生成器和验证器：
+使用 Python 3.11 或更新版本，在仓库根目录安装依赖并启动 JupyterLab：
 
 ```bash
-python scripts/build_problem_sets.py --force
-python scripts/validate_problem_sets.py
-python scripts/validate_problem_sets.py --starters
+python -m pip install -r requirements.txt
+python -m jupyterlab
 ```
 
-`--force` 会覆盖 notebook 中已经填写的答案，只应在明确想恢复空白 starter 时使用。固定随机种子生成的 CSV/NPY 数据也会同步重建。
+打开 `chapters/01_linear_regression/linear_regression.ipynb`，选择安装了依赖的 Python kernel。也可以用支持 Jupyter 的编辑器打开。PyTorch 实验使用 CPU 与 `float64`，不需要 GPU。
 
-本次分步版式由 `scripts/lesson_layout.py` 维护。旧版学习 notebook 可运行 `python scripts/build_problem_sets.py --refresh-layout` 更新版式，保留函数实现、推导答题框和实验检查开关，不重建数据。已更新的 notebook 再次运行该命令不会被重置；拆分过的代码格需重新运行。
+## 练习内容
 
-验证器默认在内存中运行当前 notebook，允许已有答案和输出，不回写执行状态；`--starters` 则验证生成器的空白模板，也不会覆盖学习进度。
+**样本与预测 → 损失与梯度 → 批量/随机梯度下降 → 正规方程 → 概率解释 → 多项式与局部回归。**
 
-## 目前的边界
+NumPy 语法嵌入对应任务；notebook 提供简短推导、公式、函数约定与检查。练习包括函数实现，以及拟合、预测、评价和作图的完整实验，无需填写推导答题框。
 
-Lecture 11–17（diffusion、representation learning、LLM、RL）在当前公开资料中没有找到可核验的 Spring 2026 官方配套作业。因此这里暂时不伪造“官方实验”；后续若添加，会明确标为本仓库原创 lecture lab。
+PyTorch 对照位于梯度下降和正规方程之后：保持数据、损失、初值、学习率与更新次数一致，比较手写梯度和自动求导，再比较参数、误差曲线与验证 MSE。
+
+检查显示“待完成”时，表示相关函数尚未实现；其他错误会正常抛出。修改输入或学习率后重新运行，可检查实现是否适用于不同设置。重启 kernel 后 Run All 可检查对隐藏状态的依赖。
+
+## 讲义与数据
+
+- [CS229 官方讲义](https://cs229.stanford.edu/main_notes.pdf)：第一章的房价例子、LMS、正规方程、概率解释和局部加权回归。
+- [Spring 2026 课程入口](https://cs229.stanford.edu/index.html-spr26)。
+- [章节对应表](COURSE_MAP.md)：使用印刷页码；PDF 阅读器页码加 1。
+
+房价输入取自讲义第 9 页展示的 **5 行记录**，价格为千美元。这不是完整的 47 条房屋数据，仅用于数组练习与优化方法对照，不能据此评价泛化。标准化统计量仅从训练输入计算。
+
+合成曲线为 `y = 0.4*x + sin(1.7*x) + noise`。仓库包含训练集 60 条、验证集 40 条、测试集 40 条；训练集拟合参数，验证集选择模型设置，测试集留待选择结束后评价。
+
+讲义使用半平方误差的总和，本练习使用半均方误差；最优参数相同，但梯度和适用学习率的尺度不同。
+
+## 生成与验证
+
+```bash
+python scripts/build_chapters.py
+python scripts/validate_chapters.py --require-torch
+python scripts/validate_chapters.py --starters --require-torch
+```
+
+生成器默认保留已有 notebook，不重建数据。`--force` 会用空白模板覆盖当前 notebook。
+
+验证脚本在内存中顺序执行 notebook，不回写文件。`--starters` 验证空白模板；模板能运行不代表练习已完成。`--require-torch` 要求所选 kernel 安装 PyTorch；可通过 `--kernel <名称>` 指定 Jupyter kernel。
